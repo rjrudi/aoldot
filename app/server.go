@@ -1,6 +1,7 @@
 package main
 
 import (
+  "os"
   "fmt"
   "io/ioutil"
   "log"
@@ -10,7 +11,7 @@ import (
 
 func appHandler(w http.ResponseWriter, r *http.Request) {
   //resp, err := http.Get("http://169.254.169.254/latest/meta-data/instance-id")
-  resp, err := http.Get("http://www.aol.com")
+  resp, err := http.Get("http://www.worldtimeserver.com/")
 
   if err != nil {
     fmt.Fprintln(w, err)
@@ -30,10 +31,8 @@ func appHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
   http.HandleFunc("/", appHandler)
-
-  -typo-log.Println("Started, serving on port 8888")
-  err := http.ListenAndServe(":8888", nil)
-
+  log.Println("Started, serving on port " + os.Args[1])
+  err := http.ListenAndServe(":" + os.Args[1], nil)
   if err != nil {
     log.Print(err.Error())
   }
