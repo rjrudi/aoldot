@@ -10,12 +10,6 @@ import (
 
 func appHandler(w http.ResponseWriter, r *http.Request) {
   //resp, err := http.Get("http://169.254.169.254/latest/meta-data/instance-id")
-  //resp, err := http.Get("http://www.aol.com")
-  //resp, err := http.Get("http://www.aol.com")
-  //resp, err := http.Get("http://www.aol.com")
-  //resp, err := http.Get("http://www.aol.com")
-  //resp, err := http.Get("http://www.aol.com")
-  //resp, err := http.Get("http://www.aol.com")
   resp, err := http.Get("http://www.aol.com")
 
   if err != nil {
@@ -31,7 +25,7 @@ func appHandler(w http.ResponseWriter, r *http.Request) {
   }
 
   defer resp.Body.Close()
-  fmt.Fprintln(w, time.Now(), string(instID))
+  fmt.Fprintln(w, time.Now(), "\n\n" + "Revision D\n\n" + string(instID))
 }
 
 func main() {
