@@ -14,6 +14,7 @@ func appHandler(w http.ResponseWriter, r *http.Request) {
   //resp, err := http.Get("http://www.aol.com")
   //resp, err := http.Get("http://www.aol.com")
   //resp, err := http.Get("http://www.aol.com")
+  //resp, err := http.Get("http://www.aol.com")
   resp, err := http.Get("http://www.aol.com")
 
   if err != nil {
