@@ -26,7 +26,7 @@ func appHandler(w http.ResponseWriter, r *http.Request) {
   }
 
   defer resp.Body.Close()
-  fmt.Fprintln(w, time.Now(), "\n\n" + "Revision D\n\n" + string(instID))
+  fmt.Fprintln(w, time.Now(), "\n\n" + "Revision E\n\n" + string(instID))
 }
 
 func main() {
