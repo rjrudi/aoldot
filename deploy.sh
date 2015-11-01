@@ -13,6 +13,7 @@ if [ -n "$PID" ]; then
 fi
 
 # Launch (chaning the BUILD_ID prevents Jenkins from killing the nohup'd server)
+cd app
 export BUILD_ID=12345678
 nohup ./server 8888 > nohup.log 2>&1 &
 sleep 5
