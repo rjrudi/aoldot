@@ -1,56 +1,40 @@
 # aoldot
 
-# Summary #
+# Basic Procedure #
 
-Deploy the provided application w/ end-to-end automation and auto-scaling capability to the public cloud.
-
-# Exercise #
-
-## Important Note ##
-
-The technologies, tools, processes and resources for this exercise are totally at your discretion. If you feel it necessary, please include 1-2 sentences for any technology/tool/process that is selected, in the README for your project.
-
-## Required Steps ##
-
-### Create a GitHub (or other) source control account ##
-
-* Create a source project repository for this exercise.
-* Create a README for the source project, which includes some of the following information:
-    * A summary of the exercise as executed.
-    * Any important details (tools utilized, OSS component dependencies, etc.) in support of the exercise. 
-    * URLs or sources of information used to create your work.
-    * Any other information you think is pertinent.
-* All best practices for source control should be utilized.
-
-### Create application and cloud resource orchestration deployment processes to deploy the provided Go application ###
-
-* The application must be deployed fully via an automated process.
-* Include details as to how you believe this process would be triggered in your source project README.
-
-### Create a test suite to validate the results of your orchestration processes ##
-
-* What needs to be tested throughout this process? How is it tested?
-
-## Optional Steps ##
-
-### Create an AWS (or other Public Cloud) free tier account ###
-
-* You may use any cloud resource/service offering by the Public Cloud vendor selected.
-* Include details in the source projects README about the services selected, including the following information:
-    * What services/resources are being used?
-    * Why were those services/resources used?
-
-### Deploy the provided Go application to the Public Cloud ###
-
-* The cloud resources must be deployed fully via an automated process.
-* The application must scale when placed under load. 
-    * The process to decide how and when to scale is also at your discretion.
-
-### Provide functional FQDN/endpoint for review ###
-
-* This application should be accessible via the public internet.
-
-## Completing Task ##
-
-* Provide a link to your source project repository.
-
+* Googled "continuous integration github aws"
+   * Chose nginx as the web server
+   * Jenkins as the CI server
+   * AWS as the cloud provider
+   * Github as the repository
+* Installed "git" on macbook
+   * Recovered github account from 2011
+   * Cloned aol/devops-test into rjrudi/aoldot
+   * Installed "go" distribution onto macbook
+   * Built and tested server.go
+   * Changed server.go to not exit on errors and to not fetch from an internal AOL IP address
+* Signed up and spun up free Ubuntu image on AWS
+   * Modified security group to allow TCP on port 80, 8080 and 88888
+   * Tested connectivity using nc -l 80, nc -l 8080 and nc -l 8888
+   * apt-get install gccgo-go
+   * apt-get install nginx
+   * apt-get install jenkins failed, google provided the following workaround
+      * wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
+      * sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
+      * sudo apt-get update
+      * Then sudo apt-get install jenkins worked
+   * Modified nginx to forward port 80 requests to 8080 Jenkins server
+* Configured Jenkins on AWS
+   * Added github plugin
+   * Created aoldot project
+   * Referred it to the Github repository, selected build trigger when Github changes
+   * sudo jenkins and run ssh-keygen to create a public key
+   * Added the key to Github account and tested ssh connectivity from AWS instance to Github
+   * Added Jenkins as a webhook in Github
+   * Verified that changes made to Github triggered a build in Jenkins
+* Build and Deploy scripts in Jenkins
+   * Write build.sh to build server.go
+   * Write deploy.sh to deploy server 
+   * Add build and deply scripts to project
+   * Build.sh compiles and starts the server on port 17222 and tests it with curl
+   * Deploy.sh starts the server on the official port 8888 and tests it with curl 
