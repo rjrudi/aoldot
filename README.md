@@ -1,7 +1,8 @@
 # aoldot
 
-# Basic Procedure #
-
+# Summary #
+For this exercise I chose to clone aol/devops-test into rjrudi/aoldot on Github. Changes commited to aoldot will cause a build trigger to be posted to Jenkins - a continuous integration server - running on a free Ubuntu instance on AWS. When triggered Jenkins pulls down the latest Github files, then runs custom-made build and deploy scripts. The build script compiles the application; if successful it starts the server on an internal port so as to test it via curl. If that succeeds then the test server is killed and the deploy script is invoked. The deploy script kills any previously running server, and starts the recently built one. It is also tested with curl and if it succeeds, the build is shown in Jenkins console as successful. With this arrangement any Github member should be able to commit changes to server.go and within 1 minute see the changes reflected in production. The scripts are also part of this repository.
+# Basics #
 * Googled "continuous integration github aws"
    * Chose nginx as the web server
    * Jenkins as the CI server
@@ -37,4 +38,5 @@
    * Write deploy.sh to deploy server 
    * Add build and deply scripts to project
    * Build.sh compiles and starts the server on port 17222 and tests it with curl
-   * Deploy.sh starts the server on the official port 8888 and tests it with curl 
+   * Deploy.sh starts the server on the official port 8888 and tests it with curl
+   
