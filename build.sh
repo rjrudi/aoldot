@@ -6,7 +6,6 @@
 ######################
 
 # Compile
-cd app
 go build server.go
 BUILD_STATUS=$?
 if [ $BUILD_STATUS -ne 0 ]; then
