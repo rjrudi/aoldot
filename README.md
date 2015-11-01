@@ -39,4 +39,9 @@ For this exercise I chose to clone aol/devops-test into rjrudi/aoldot on Github.
    * Add build and deply scripts to project
    * Build.sh compiles and starts the server on port 17222 and tests it with curl
    * Deploy.sh starts the server on the official port 8888 and tests it with curl
-   
+* End-End Testing
+  * Commit a change to the Github project
+  * From the Jenkins console note a new build had been schduled and completed
+  * If intentional errors introduced into the source, the server on AWS port 8888 should not change
+  * If no errors, the server on AWS port 8888 should reflect the changes
+  * This was verified
