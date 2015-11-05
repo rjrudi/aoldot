@@ -45,3 +45,5 @@ For this exercise I chose to clone aol/devops-test into rjrudi/aoldot on Github.
   * If intentional errors introduced into the source, the server on AWS port 8888 should not change
   * If no errors, the server on AWS port 8888 should reflect the changes
   * This was verified
+  * 
+  
