@@ -28,7 +28,7 @@ fi
 
 # Copy binary to S3
 if [ $DEPLOY_STATUS -eq 0 ]; then
-   aws s3 cp s3://aoldot/server
+   aws s3 cp server s3://aoldot/server
    DEPLOY_STATUS=$?
 fi
    
