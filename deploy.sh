@@ -25,6 +25,13 @@ else
    echo "------ deploy failed ($REVISION)"
    DEPLOY_STATUS=1
 fi
+
+# Copy binary to S3
+if [ $DEPLOY_STATUS -eq 0 ]; then
+   aws s3 cp s3://aoldot/server
+   DEPLOY_STATUS=$?
+fi
+   
 exit $DEPLOY_STATUS
 
 
